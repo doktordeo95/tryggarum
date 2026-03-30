@@ -16,9 +16,13 @@
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,248,244,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; }
-  .nav-logo { height: 38px; display: flex; align-items: center; flex-shrink: 0; }
+  .nav-logo { height: 38px; display: flex; align-items: center; flex-shrink: 0; min-width: 230px; }
   .nav-logo a { display: flex; align-items: center; }
   .brand-logo { display: block; height: 48px; width: auto; max-width: min(230px, 42vw); }
+  /* ─── BILD 1: Logotyp ───────────────────────────────────────────────────────
+     Byt ut placeholder-diven mot:
+     <img src="logo.png" alt="Trygga Rum" style="height:38px;width:auto;">
+  ─────────────────────────────────────────────────────────────────────────── */
   .placeholder-logo { height: 38px; padding: 0 14px; background: #1a1a1a; border: 1.5px solid var(--sage); display: flex; align-items: center; border-radius: 2px; font-family: 'Inter', sans-serif; }
   .placeholder-logo .pl-green { background: var(--sage); height: 100%; display: flex; align-items: center; padding: 0 10px; margin: -1px; }
   .placeholder-logo .pl-green span { font-size: 0.62rem; letter-spacing: 0.12em; color: white; font-weight: 600; white-space: nowrap; }
@@ -52,6 +56,10 @@
   /* PORTRAIT */
   .hero-portrait { position: relative; display: flex; justify-content: center; }
   .portrait-frame { width: 360px; height: 430px; border-radius: 200px 200px 140px 140px; overflow: hidden; position: relative; box-shadow: 0 30px 80px rgba(92,112,96,0.25); }
+  /* ─── BILD 2: Porträttfoto ──────────────────────────────────────────────────
+     Byt ut placeholder-diven mot:
+     <img src="charlotte.jpg" alt="Charlotte Orwin" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
+  ─────────────────────────────────────────────────────────────────────────── */
   .placeholder-portrait { width: 100%; height: 100%; background: linear-gradient(160deg, var(--sage) 0%, var(--sage-dark) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .portrait-accent { position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; border: 2px solid var(--clay); border-radius: 50%; opacity: 0.4; }
   .portrait-accent2 { position: absolute; bottom: -15px; left: -15px; width: 80px; height: 80px; background: var(--clay); border-radius: 50%; opacity: 0.15; }
@@ -64,6 +72,10 @@
   /* OM MIG */
   .about { background: var(--warm-white); }
   .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  /* ─── BILD 3: SAG-märket ────────────────────────────────────────────────────
+     Byt ut placeholder-diven mot:
+     <img src="sag.png" alt="Auktoriserad Gestaltterapeut SAG" style="height:44px;width:auto;margin-top:2rem;">
+  ─────────────────────────────────────────────────────────────────────────── */
   .placeholder-sag { margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.5rem 1.2rem; border: 1.5px solid var(--border); border-radius: 30px; font-size: 0.78rem; color: var(--text-light); }
   .sag-dot { width: 8px; height: 8px; background: var(--sage); border-radius: 50%; flex-shrink: 0; }
   .credentials { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
@@ -75,6 +87,7 @@
   .gestalt-card { padding: 2.5rem; background: var(--warm-white); border-radius: 4px; border-top: 3px solid var(--sage); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
   .gestalt-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--sage-dark); margin-bottom: 1rem; }
   .gestalt-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; }
+
 
   /* PROCESS */
   .process { background: var(--warm-white); }
@@ -100,11 +113,17 @@
   .contact-form textarea { min-height: 140px; resize: vertical; }
   .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
+
   /* SKRIVTERAPI */
   .skrivterapi { background: linear-gradient(135deg, var(--sage-dark) 0%, #3d5440 100%); color: white; }
   .skrivterapi .section-label { color: var(--clay); }
   .skrivterapi .section-title { color: white; }
-  .skriv-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
+  .skriv-grid { 
+  display: grid; 
+  grid-template-columns: 1.3fr 1fr; 
+  gap: 80px; 
+  align-items: center; 
+}
   .skriv-text p { color: rgba(255,255,255,0.82); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.2rem; }
   .skriv-praktisk { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
   .skriv-praktisk h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: white; margin-bottom: 0.5rem; }
@@ -117,7 +136,12 @@
   .handledare-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 1.8rem; font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.75; }
 
   /* FOOTER */
-  footer { background: #1e2820; color: rgba(255,255,255,0.55); padding: 2rem 5%; text-align: center; }
+  footer { 
+  background: #1e2820; 
+  color: rgba(255,255,255,0.55); 
+  padding: 2rem 5%; 
+  text-align: center; 
+}
 
   @media (max-width: 800px) {
     .hero-inner, .about-grid, .gestalt-grid, .skriv-grid, .steps, .kontakt-grid, .handledare-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -134,7 +158,7 @@
 <nav>
   <div class="nav-logo">
     <a href="#hem" aria-label="Till toppen av sidan" onclick="closeMenu()">
-      <img class="brand-logo" src="logo.png" alt="Trygga Rum">
+      <img class="brand-logo" src="data:image/png;base64,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" alt="Trygga Rum">
     </a>
   </div>
   <ul class="nav-links">
@@ -142,6 +166,9 @@
     <li><a href="#gestalt">Gestaltterapi</a></li>
     <li><a href="#process">Hur går det till</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
+    <!-- 
+    <li><a href="#skrivterapi">Skrivterapi</a></li>
+    -->
   </ul>
   <a class="nav-cta" href="#kontakt">Kontakta mig</a>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Meny">
@@ -152,10 +179,14 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#om-mig" onclick="closeMenu()">Om mig</a>
   <a href="#gestalt" onclick="closeMenu()">Gestaltterapi</a>
+  <!-- SKRIVTERAPI 
+  <a href="#skrivterapi" onclick="closeMenu()">Skrivterapi</a>
+  -->
   <a href="#process" onclick="closeMenu()">Hur går det till</a>
   <a href="#kontakt" onclick="closeMenu()">Kontakt</a>
 </div>
 
+<!-- HERO -->
 <section class="hero" id="hem">
   <div class="hero-inner">
     <div class="hero-text">
@@ -169,12 +200,14 @@
       <div class="portrait-accent"></div>
       <div class="portrait-accent2"></div>
       <div class="portrait-frame">
+        <!-- BILD 2 – Byt ut mot: <img src="charlotte.webp" alt="Charlotte Orwin" style="width:100%;height:100%;object-fit:cover;object-position:top center;"> -->
         <img src="charlotte.webp" alt="Charlotte Orwin" style="width:100%;height:100%;object-fit:cover;object-position:top center;">
       </div>
     </div>
   </div>
 </section>
 
+<!-- OM MIG -->
 <section class="about" id="om-mig">
   <div class="section-inner">
     <div class="about-grid">
@@ -184,6 +217,7 @@
       </div>
       <div>
         <p style="color:var(--text-light);line-height:1.85;margin-bottom:1.2rem;">Jag heter Charlotte Orwin och är gestaltterapeut. Min strävan är att du ska känna dig trygg, sedd och stöttad i våra möten. Jag formar terapin efter vem du är och ditt sätt att fungera. Behovet av terapi kan ha många olika orsaker. Kanske är du stressad, har för höga krav på dig själv, lider av ångest eller har problem i dina relationer. Kanske står du inför ett val i livet och har behov av att sortera tankar och känslor eller bär på en längtan efter att utvecklas.</p>
+      
         <p style="color:var(--text-light);line-height:1.85;">Jag är diplomerad och auktoriserad Gestaltterapeut genom Sveriges Auktoriserade Gestaltterapeuter, SAG som lyder under det europeiska organet EAGT. Jag är även utbildad anhörigterapeut, mindfulnesslärare i MBSR (Mindful based stress reduction) och ACT (Acceptence comitment therapy) med lång klinisk erfarenhet av både enskild terapi och gruppterapi.</p>
         <img src="sag.webp" alt="Auktoriserad Gestaltterapeut SAG" style="height:44px;width:auto;margin:1rem 0 1.5rem 0;">
       </div>
@@ -191,6 +225,7 @@
   </div>
 </section>
 
+<!-- GESTALTTERAPI -->
 <section class="gestalt" id="gestalt">
   <div class="section-inner">
     <span class="section-label">Metod</span>
@@ -208,6 +243,7 @@
   </div>
 </section>
 
+<!-- PROCESS -->
 <section class="process" id="process">
   <div class="section-inner">
     <span class="section-label">Hur går det till</span>
@@ -223,63 +259,136 @@
         <div class="step-num">02</div>
         <div class="step-divider"></div>
         <h3>Kartläggning</h3>
-        <p>Över tid lär vi känna mönster, strategier och sätt att vara som kanske en gång hjälpt dig men som idag begränsar dig. Vi utforskar kropp, känslor, tankar och relationer.</p>
+        <p>I det fortsatta arbetet kanske vi behöver kartlägga sammanhanget du lever i här och nu för att undersöka hur det påverkar dig och ditt mående. Det kan också finnas obearbetade händelser från den förflutna som ligger i vägen och hindrar din fortsatta utveckling.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-divider"></div>
-        <h3>Förändring i din takt</h3>
-        <p>Målet är inte att bli någon annan, utan att bli mer i kontakt med dig själv. När medvetenheten ökar blir det ofta lättare att göra nya val, sätta gränser och leva närmare det du längtar efter.</p>
+        <h3>Nya perspektiv</h3>
+        <p>Syftet är att du ska få nya perspektiv på gamla erfarenheter. Att bli medveten om valmöjligheter och våga prova nya tankar och handlingsalternativ och hitta nya vägar framåt.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- KONTAKT -->
 <section class="kontakt" id="kontakt">
-  <div class="section-inner kontakt-grid">
-    <div>
-      <span class="section-label">Kontakt</span>
-      <h2 class="section-title">Välkommen att höra av dig</h2>
-      <p style="color:var(--text-light);max-width:520px;">Om du vill boka ett första samtal eller har frågor om hur jag arbetar är du varmt välkommen att kontakta mig.</p>
-      <div class="kontakt-info">
-        <div class="info-row">
-          <div class="info-icon">@</div>
-          <div>
-            <div class="info-label">E-post</div>
-            <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
+  <div class="section-inner">
+    <div class="kontakt-grid">
+      <div>
+        <span class="section-label">Kontakt</span>
+        <h2 class="section-title">Kontakta mig</h2>
+        <p style="color:var(--text-light);margin-bottom:1rem;">Tveka inte att kontakta mig för mer information eller tidsbokning!</p>
+        <div class="kontakt-info">
+          <div class="info-row">
+            <div class="info-icon">✉</div>
+            <div>
+              <div class="info-label">E-post</div>
+              <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📍</div>
+            <div>
+              <div class="info-label">Adress</div>
+              <div class="info-value">Maria Prästgårdsgata 17, Stockholm</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <form class="contact-form" name="kontakt" method="POST" data-netlify="true">
-      <input type="hidden" name="form-name" value="kontakt">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Namn" required>
-        <input type="email" name="email" placeholder="E-post" required>
+      <div>
+        <div class="contact-form">
+          <div class="form-row">
+            <input type="text" placeholder="Ditt namn"/>
+            <input type="email" placeholder="Din e-post"/>
+          </div>
+          <input type="text" placeholder="Ämne"/>
+          <textarea placeholder="Ditt meddelande..."></textarea>
+          <button class="btn" style="border:none;cursor:pointer;text-align:center;">Skicka meddelande</button>
+        </div>
       </div>
-      <textarea name="message" placeholder="Skriv ditt meddelande här" required></textarea>
-      <button type="submit" class="btn">Skicka</button>
-    </form>
+    </div>
   </div>
 </section>
+
+<!-- SKRIVTERAPI 
+<section class="skrivterapi" id="skrivterapi">
+  <div class="section-inner">
+    <div class="skriv-grid">
+      <div class="skriv-text">
+        <span class="section-label">Skrivterapi</span>
+        <h2 class="section-title">Skrivterapi i grupp</h2>
+        <p>I skrivterapi använder vi skrivandet för att utforska oss själva, närma oss händelser i livet som påverkat oss på djupet, få nya perspektiv, och främja personlig läkning och utveckling.</p>
+        <p>I ett tryggt rum med terapeutisk handledning får du vägledning i expressivt skrivande för att öppna din egen skrivprocess och möjlighet att dela dina upplevelser i en liten grupp. Att ta kontakt med det angelägna via skrivandet och dela det med andra är läkande.</p>
+        <p>Mellan varje tillfälle får du skrivövningar som du gör hemma och som följs upp vid nästkommande träff.</p>
+        <p>Skrivterapi bygger på evidensbaserad forskning kring skrivandets läkande krafter och vilar på en gestaltmetodisk grund.</p>
+        <p>Inga förkunskaper krävs.</p>
+        <p style="margin-top:1.2rem;font-style:italic;color:rgba(255,255,255,0.9);">
+          Skrivterapi i grupp erbjuds inte just nu, men planeras framöver.
+          </p>
+        <a href="#kontakt" class="btn" style="background:var(--clay);margin-top:1rem;">Kontakta mig</a>
+      </div>
+      <div class="skriv-praktisk">
+        <h3>Information</h3>
+      
+        <p style="font-size:0.9rem;line-height:1.7;color:rgba(255,255,255,0.85);">
+          Upplägget för kommande grupper är under utveckling.
+        </p>
+      
+        <hr class="skriv-divider"/>
+      
+        <div class="info-line">
+          <strong>Plats</strong>
+          Maria Prästgårdsgata 17, Stockholm
+        </div>
+      
+        <hr class="skriv-divider"/>
+      
+        <div class="info-line">
+          <strong>Om du är intresserad, kontakta:</strong>
+          <a href="mailto:charlotte.orwin@tryggarum.nu" style="color:var(--clay);">charlotte.orwin@tryggarum.nu</a><br/>
+          <a href="mailto:annelisabeth.bergman@gmail.com" style="color:var(--clay);">annelisabeth.bergman@gmail.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="skriv-handledare">
+      <h3>Dina handledare</h3>
+      <div class="handledare-grid">
+        <div class="handledare-card"><strong>Charlotte Orwin </strong>är poet och författare med flera publicerade böcker och producerade dramaserier. Charlotte är även skrivpedagog, manuscoach och utbildad mindfulnesslärare i MBSR, ACT och är dipl. anhörigterapeut med flera års klinisk erfarenhet. Charlotte är auktoriserad och diplomerad gestaltterapeut.</div>
+        <div class="handledare-card"><strong>Ann Bergman</strong> har en bakgrund som nationalekonom. Ann valde en ny väg mitt i livet, vidareutbildade sig inom beteendevetenskap och har därefter arbetat med grupputveckling och arrangerar och handleder UGL, Utveckling av Grupp och Ledare, en kurs i ledarskap, självkännedom och gruppdynamik. Ann är auktoriserad och diplomerad gestaltterapeut.</div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
 
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">
-      <img class="brand-logo" src="logo.png" alt="Trygga Rum">
+      <img class="brand-logo" src="data:image/png;base64,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" alt="Trygga Rum">
     </div>
+
     <p>Charlotte Orwin Gestaltterapi &nbsp;·&nbsp; Maria Prästgårdsgata 17, Stockholm<br/>
     <a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></p>
+
+    <p style="margin-top:1.5rem;font-size:0.75rem;opacity:0.4;">©2026 av William Sahlin</p>
   </div>
 </footer>
 
 <script>
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-function closeMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
-}
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
+    navLinks.forEach(a => {
+      const active = a.getAttribute('href') === '#' + cur;
+      a.style.borderBottomColor = active ? 'var(--clay)' : 'transparent';
+      a.style.color = active ? 'var(--sage-dark)' : '';
+    });
+  });
 </script>
 </body>
 </html>
