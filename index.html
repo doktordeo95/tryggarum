@@ -16,8 +16,14 @@
 
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(250,248,244,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; }
-  .nav-logo { height: 38px; display: flex; align-items: center; }
+  .nav-logo { height: 38px; display: flex; align-items: center; flex-shrink: 0; }
   .nav-logo a { display: flex; align-items: center; }
+  .brand-logo { display: block; height: 48px; width: auto; max-width: min(230px, 42vw); }
+  .placeholder-logo { height: 38px; padding: 0 14px; background: #1a1a1a; border: 1.5px solid var(--sage); display: flex; align-items: center; border-radius: 2px; font-family: 'Inter', sans-serif; }
+  .placeholder-logo .pl-green { background: var(--sage); height: 100%; display: flex; align-items: center; padding: 0 10px; margin: -1px; }
+  .placeholder-logo .pl-green span { font-size: 0.62rem; letter-spacing: 0.12em; color: white; font-weight: 600; white-space: nowrap; }
+  .placeholder-logo .pl-right { padding: 0 10px; }
+  .placeholder-logo .pl-right span { font-size: 0.6rem; letter-spacing: 0.1em; color: #aaa; font-weight: 300; white-space: nowrap; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; padding-bottom: 3px; border-bottom: 1.5px solid transparent; }
   .nav-links a:hover { color: var(--sage-dark); border-bottom-color: var(--clay); }
@@ -30,6 +36,7 @@
   .mobile-menu a { text-decoration: none; color: var(--text); font-size: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); letter-spacing: 0.05em; }
   .mobile-menu a:last-child { border-bottom: none; }
 
+  /* HERO */
   .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 60px; background: linear-gradient(135deg, #f0ece2 0%, #e8ede6 50%, #f0ece2 100%); position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(138,158,140,0.15) 0%, transparent 70%); border-radius: 50%; }
   .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
@@ -42,24 +49,34 @@
   .btn-outline { background: transparent; border: 1.5px solid var(--sage-dark); color: var(--sage-dark); margin-left: 1rem; }
   .btn-outline:hover { background: var(--sage-dark); color: #fff; }
 
+  /* PORTRAIT */
   .hero-portrait { position: relative; display: flex; justify-content: center; }
   .portrait-frame { width: 360px; height: 430px; border-radius: 200px 200px 140px 140px; overflow: hidden; position: relative; box-shadow: 0 30px 80px rgba(92,112,96,0.25); }
+  .placeholder-portrait { width: 100%; height: 100%; background: linear-gradient(160deg, var(--sage) 0%, var(--sage-dark) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem; color: rgba(255,255,255,0.7); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .portrait-accent { position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; border: 2px solid var(--clay); border-radius: 50%; opacity: 0.4; }
   .portrait-accent2 { position: absolute; bottom: -15px; left: -15px; width: 80px; height: 80px; background: var(--clay); border-radius: 50%; opacity: 0.15; }
 
+  /* SECTIONS */
   section { padding: 100px 5%; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--sage-dark); line-height: 1.2; margin-bottom: 1.5rem; }
 
+  /* OM MIG */
   .about { background: var(--warm-white); }
   .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .placeholder-sag { margin-top: 2rem; display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.5rem 1.2rem; border: 1.5px solid var(--border); border-radius: 30px; font-size: 0.78rem; color: var(--text-light); }
+  .sag-dot { width: 8px; height: 8px; background: var(--sage); border-radius: 50%; flex-shrink: 0; }
+  .credentials { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+  .credential { padding: 1rem 1.2rem; background: var(--sand); border-left: 3px solid var(--sage); border-radius: 0 4px 4px 0; font-size: 0.9rem; color: var(--text-light); line-height: 1.6; }
 
+  /* GESTALT */
   .gestalt { background: var(--sand); }
   .gestalt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 3rem; }
   .gestalt-card { padding: 2.5rem; background: var(--warm-white); border-radius: 4px; border-top: 3px solid var(--sage); box-shadow: 0 4px 30px rgba(0,0,0,0.04); }
   .gestalt-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--sage-dark); margin-bottom: 1rem; }
   .gestalt-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.8; }
 
+  /* PROCESS */
   .process { background: var(--warm-white); }
   .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 40px; margin-top: 3rem; }
   .step-num { font-family: 'Cormorant Garamond', serif; font-size: 5rem; font-weight: 300; color: var(--border); line-height: 1; margin-bottom: 0.5rem; }
@@ -67,6 +84,7 @@
   .step p { font-size: 0.92rem; color: var(--text-light); line-height: 1.8; }
   .step-divider { width: 40px; height: 2px; background: var(--clay); margin-bottom: 1.5rem; }
 
+  /* KONTAKT */
   .kontakt { background: var(--sand); }
   .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
   .kontakt-info { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
@@ -82,15 +100,27 @@
   .contact-form textarea { min-height: 140px; resize: vertical; }
   .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-  footer {
-    background: #1e2820;
-    color: rgba(255,255,255,0.55);
-    padding: 2rem 5%;
-    text-align: center;
-  }
+  /* SKRIVTERAPI */
+  .skrivterapi { background: linear-gradient(135deg, var(--sage-dark) 0%, #3d5440 100%); color: white; }
+  .skrivterapi .section-label { color: var(--clay); }
+  .skrivterapi .section-title { color: white; }
+  .skriv-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: center; }
+  .skriv-text p { color: rgba(255,255,255,0.82); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.2rem; }
+  .skriv-praktisk { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+  .skriv-praktisk h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; color: white; margin-bottom: 0.5rem; }
+  .info-line { font-size: 0.88rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+  .info-line strong { color: rgba(255,255,255,0.95); display: block; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.15rem; }
+  .skriv-divider { border: none; border-top: 1px solid rgba(255,255,255,0.12); }
+  .skriv-handledare { margin-top: 3rem; }
+  .skriv-handledare h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: white; margin-bottom: 1.5rem; }
+  .handledare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .handledare-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 1.8rem; font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.75; }
+
+  /* FOOTER */
+  footer { background: #1e2820; color: rgba(255,255,255,0.55); padding: 2rem 5%; text-align: center; }
 
   @media (max-width: 800px) {
-    .hero-inner, .about-grid, .gestalt-grid, .steps, .kontakt-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-inner, .about-grid, .gestalt-grid, .skriv-grid, .steps, .kontakt-grid, .handledare-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero-portrait { order: -1; }
     .portrait-frame { width: 260px; height: 310px; margin: 0 auto; }
     .contact-form .form-row { grid-template-columns: 1fr; }
@@ -104,7 +134,7 @@
 <nav>
   <div class="nav-logo">
     <a href="#hem" aria-label="Till toppen av sidan" onclick="closeMenu()">
-      <img src="logo.png" alt="Trygga Rum" style="height:48px;width:auto;display:block">
+      <img class="brand-logo" src="logo.png" alt="Trygga Rum">
     </a>
   </div>
   <ul class="nav-links">
@@ -193,82 +223,63 @@
         <div class="step-num">02</div>
         <div class="step-divider"></div>
         <h3>Kartläggning</h3>
-        <p>I det fortsatta arbetet kanske vi behöver kartlägga sammanhanget du lever i här och nu för att undersöka hur det påverkar dig och ditt mående. Det kan också finnas obearbetade händelser från den förflutna som ligger i vägen och hindrar din fortsatta utveckling.</p>
+        <p>Över tid lär vi känna mönster, strategier och sätt att vara som kanske en gång hjälpt dig men som idag begränsar dig. Vi utforskar kropp, känslor, tankar och relationer.</p>
       </div>
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-divider"></div>
-        <h3>Nya perspektiv</h3>
-        <p>Syftet är att du ska få nya perspektiv på gamla erfarenheter. Att bli medveten om valmöjligheter och våga prova nya tankar och handlingsalternativ och hitta nya vägar framåt.</p>
+        <h3>Förändring i din takt</h3>
+        <p>Målet är inte att bli någon annan, utan att bli mer i kontakt med dig själv. När medvetenheten ökar blir det ofta lättare att göra nya val, sätta gränser och leva närmare det du längtar efter.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section class="kontakt" id="kontakt">
-  <div class="section-inner">
-    <div class="kontakt-grid">
-      <div>
-        <span class="section-label">Kontakt</span>
-        <h2 class="section-title">Kontakta mig</h2>
-        <p style="color:var(--text-light);margin-bottom:1rem;">Tveka inte att kontakta mig för mer information eller tidsbokning!</p>
-        <div class="kontakt-info">
-          <div class="info-row">
-            <div class="info-icon">✉</div>
-            <div>
-              <div class="info-label">E-post</div>
-              <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
-            </div>
+  <div class="section-inner kontakt-grid">
+    <div>
+      <span class="section-label">Kontakt</span>
+      <h2 class="section-title">Välkommen att höra av dig</h2>
+      <p style="color:var(--text-light);max-width:520px;">Om du vill boka ett första samtal eller har frågor om hur jag arbetar är du varmt välkommen att kontakta mig.</p>
+      <div class="kontakt-info">
+        <div class="info-row">
+          <div class="info-icon">@</div>
+          <div>
+            <div class="info-label">E-post</div>
+            <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
           </div>
-          <div class="info-row">
-            <div class="info-icon">📍</div>
-            <div>
-              <div class="info-label">Adress</div>
-              <div class="info-value">Maria Prästgårdsgata 17, Stockholm</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div class="contact-form">
-          <div class="form-row">
-            <input type="text" placeholder="Ditt namn"/>
-            <input type="email" placeholder="Din e-post"/>
-          </div>
-          <input type="text" placeholder="Ämne"/>
-          <textarea placeholder="Ditt meddelande..."></textarea>
-          <button class="btn" style="border:none;cursor:pointer;text-align:center;">Skicka meddelande</button>
         </div>
       </div>
     </div>
+    <form class="contact-form" name="kontakt" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="kontakt">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Namn" required>
+        <input type="email" name="email" placeholder="E-post" required>
+      </div>
+      <textarea name="message" placeholder="Skriv ditt meddelande här" required></textarea>
+      <button type="submit" class="btn">Skicka</button>
+    </form>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">
-      <img src="logo.png" alt="Trygga Rum" style="height:48px;width:auto">
+      <img class="brand-logo" src="logo.png" alt="Trygga Rum">
     </div>
     <p>Charlotte Orwin Gestaltterapi &nbsp;·&nbsp; Maria Prästgårdsgata 17, Stockholm<br/>
     <a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></p>
-    <p style="margin-top:1.5rem;font-size:0.75rem;opacity:0.4;">©2026 av William Sahlin</p>
   </div>
 </footer>
 
 <script>
-  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
-  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let cur = '';
-    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) cur = s.id; });
-    navLinks.forEach(a => {
-      const active = a.getAttribute('href') === '#' + cur;
-      a.style.borderBottomColor = active ? 'var(--clay)' : 'transparent';
-      a.style.color = active ? 'var(--sage-dark)' : '';
-    });
-  });
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
 </script>
 </body>
 </html>
