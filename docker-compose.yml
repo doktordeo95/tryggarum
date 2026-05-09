@@ -1,0 +1,19 @@
+services:
+  app:
+    build: .
+    container_name: tryggarum
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.tryggarum.rule=Host(`tryggarum.nu`) || Host(`www.tryggarum.nu`)"
+      - "traefik.http.routers.tryggarum.entrypoints=websecure"
+      - "traefik.http.routers.tryggarum.tls=true"
+      - "traefik.http.routers.tryggarum.tls.certresolver=letsencrypt"
+      - "traefik.http.services.tryggarum.loadbalancer.server.port=80"
+    networks:
+      - traefik_proxy
+
+networks:
+  traefik_proxy:
+    external: true
