@@ -39,6 +39,7 @@
   .mobile-menu.open { display: flex; }
   .mobile-menu a { text-decoration: none; color: var(--text); font-size: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--border); letter-spacing: 0.05em; }
   .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu-close { align-self: flex-end; background: none; border: none; cursor: pointer; font-size: 1.5rem; line-height: 1; color: var(--text-light); padding: 0 0 0.5rem 0; }
 
   /* HERO */
   .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 5% 60px; background: linear-gradient(135deg, #f0ece2 0%, #e8ede6 50%, #f0ece2 100%); position: relative; overflow: hidden; }
@@ -144,6 +145,7 @@
   align-items: center;
 }
   .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+  .footer-logo { padding: 1rem 0; }
   footer a { color: inherit; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
@@ -179,6 +181,7 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" onclick="closeMenu()" aria-label="Stäng meny">×</button>
   <a href="#om-mig" onclick="closeMenu()">Om mig</a>
   <a href="#gestalt" onclick="closeMenu()">Gestaltterapi</a>
   <a href="#skrivterapi" onclick="closeMenu()">Skrivterapi</a>
