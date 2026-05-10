@@ -75,7 +75,7 @@
   .placeholder-logo .pl-right { padding: 0 10px; }
   .placeholder-logo .pl-right span { font-size: 0.6rem; letter-spacing: 0.1em; color: #aaa; font-weight: 300; white-space: nowrap; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; padding-bottom: 3px; border-bottom: 1.5px solid transparent; }
+  .nav-links a { text-decoration: none; color: var(--text-light); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; transition: color 0.2s; padding-bottom: 3px; border-bottom: 1.5px solid transparent; white-space: nowrap; }
   .nav-links a:hover { color: var(--sage-dark); border-bottom-color: var(--clay); }
   .nav-cta { display: inline-block; padding: 9px 22px; background: var(--sage-dark); color: #fff; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; border-radius: 2px; transition: background 0.2s; }
   .nav-cta:hover { background: var(--sage); }
@@ -190,13 +190,15 @@
   footer a { color: inherit; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
-  @media (max-width: 800px) {
-    .hero-inner, .about-grid, .gestalt-grid, .skriv-grid, .steps, .handledare-grid { grid-template-columns: 1fr; gap: 40px; }
-    .hero-portrait { order: -1; }
-    .portrait-frame { width: 260px; height: 310px; margin: 0 auto; }
-    .contact-form .form-row { grid-template-columns: 1fr; }
+  @media (max-width: 1050px) {
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-portrait { order: -1; }
+    .portrait-frame { width: 260px; height: 310px; margin: 0 auto; }
+  }
+  @media (max-width: 800px) {
+    .about-grid, .gestalt-grid, .skriv-grid, .steps, .handledare-grid { grid-template-columns: 1fr; gap: 40px; }
   }
 </style>
 </head>
@@ -215,7 +217,6 @@
     <li><a href="#skrivterapi">Skrivterapi</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-  <a class="nav-cta" href="#kontakt">Kontakta mig</a>
   <button class="hamburger" onclick="toggleMenu()" aria-label="Meny">
     <span></span><span></span><span></span>
   </button>
