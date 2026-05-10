@@ -145,9 +145,8 @@
   .step-divider { width: 40px; height: 2px; background: var(--clay); margin-bottom: 1.5rem; }
 
   /* KONTAKT */
-  .kontakt { background: var(--sand); }
-  .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .kontakt-info { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .kontakt { background: var(--warm-white); }
+  .kontakt-info { display: flex; flex-direction: column; gap: 1.5rem; max-width: 480px; }
   .info-row { display: flex; align-items: flex-start; gap: 1.2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
   .info-icon { width: 44px; height: 44px; background: var(--sage-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; font-size: 1rem; }
   .info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light); margin-bottom: 0.2rem; }
@@ -155,10 +154,6 @@
   .info-value a { color: var(--sage-dark); text-decoration: none; }
   .info-value a:hover { text-decoration: underline; }
   .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-  .contact-form input, .contact-form textarea { width: 100%; padding: 14px 18px; border: 1.5px solid var(--border); background: var(--warm-white); font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text); border-radius: 3px; transition: border-color 0.2s; outline: none; }
-  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--sage); }
-  .contact-form textarea { min-height: 140px; resize: vertical; }
-  .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
 
   /* SKRIVTERAPI */
@@ -196,7 +191,7 @@
   footer a:hover { text-decoration: underline; }
 
   @media (max-width: 800px) {
-    .hero-inner, .about-grid, .gestalt-grid, .skriv-grid, .steps, .kontakt-grid, .handledare-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-inner, .about-grid, .gestalt-grid, .skriv-grid, .steps, .handledare-grid { grid-template-columns: 1fr; gap: 40px; }
     .hero-portrait { order: -1; }
     .portrait-frame { width: 260px; height: 310px; margin: 0 auto; }
     .contact-form .form-row { grid-template-columns: 1fr; }
@@ -398,38 +393,23 @@
 <!-- KONTAKT -->
 <section class="kontakt" id="kontakt">
   <div class="section-inner">
-    <div class="kontakt-grid">
-      <div>
-        <span class="section-label">Kontakt</span>
-        <h2 class="section-title">Kontakta mig</h2>
-        <p style="color:var(--text-light);margin-bottom:1rem;">Tveka inte att kontakta mig för mer information eller tidsbokning!</p>
-        <div class="kontakt-info">
-          <div class="info-row">
-            <div class="info-icon">✉</div>
-            <div>
-              <div class="info-label">E-post</div>
-              <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
-            </div>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">📍</div>
-            <div>
-              <div class="info-label">Adress</div>
-              <div class="info-value">Maria Prästgårdsgata 17, Stockholm</div>
-            </div>
-          </div>
+    <span class="section-label">Kontakt</span>
+    <h2 class="section-title">Kontakta mig</h2>
+    <p style="color:var(--text-light);margin-bottom:2rem;">Tveka inte att kontakta mig för mer information eller tidsbokning!</p>
+    <div class="kontakt-info">
+      <div class="info-row">
+        <div class="info-icon">✉</div>
+        <div>
+          <div class="info-label">E-post</div>
+          <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
         </div>
       </div>
-      <div>
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <input type="text" id="contactName" name="name" placeholder="Ditt namn" required/>
-            <input type="email" id="contactEmail" name="email" placeholder="Din e-post" required/>
-          </div>
-          <input type="text" id="contactSubject" name="subject" placeholder="Ämne" required/>
-          <textarea id="contactMessage" name="message" placeholder="Ditt meddelande..." required></textarea>
-          <button type="submit" class="btn" style="border:none;cursor:pointer;text-align:center;">Skicka meddelande</button>
-        </form>
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div>
+          <div class="info-label">Adress</div>
+          <div class="info-value">Maria Prästgårdsgata 17, Stockholm</div>
+        </div>
       </div>
     </div>
   </div>
@@ -463,26 +443,6 @@
     });
   });
 
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-
-      const name = document.getElementById('contactName').value.trim();
-      const email = document.getElementById('contactEmail').value.trim();
-      const subject = document.getElementById('contactSubject').value.trim();
-      const message = document.getElementById('contactMessage').value.trim();
-
-      const body = [
-        `Namn: ${name}`,
-        `E-post: ${email}`,
-        '',
-        message
-      ].join('\n');
-
-      window.location.href = `mailto:charlotte.orwin@tryggarum.nu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
-  }
 </script>
 </body>
 </html>
