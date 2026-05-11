@@ -8,11 +8,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 app.set('trust proxy', 1);
 app.use(express.json({ limit: '20kb' }));
 
-app.use((req, res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.path} from ${req.ip} ua="${req.get('user-agent')}"`);
-  next();
-});
-
 const LIMITS = { name: 80, email: 120, subject: 120, message: 2000 };
 
 function escapeHtml(str) {

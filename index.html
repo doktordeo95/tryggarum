@@ -528,7 +528,7 @@
           showMessage(data.error || 'Något gick fel. Försök igen.', 'error');
         }
       } catch (e) {
-        showMessage('Fel: ' + (e && e.message ? e.message : 'okänt'), 'error');
+        showMessage('Kunde inte skicka meddelandet. Försök igen senare.', 'error');
       } finally {
         submitBtn.textContent = 'Skicka meddelande';
         submitBtn.disabled = false;
