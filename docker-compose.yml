@@ -14,6 +14,24 @@ services:
     networks:
       - traefik_proxy
 
+  kontakt-api:
+    build: ./api
+    container_name: kontakt-api
+    restart: unless-stopped
+    environment:
+      - RESEND_API_KEY=${RESEND_API_KEY}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.kontakt.rule=Host(`tryggarum.nu`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.kontakt.entrypoints=websecure"
+      - "traefik.http.routers.kontakt.tls=true"
+      - "traefik.http.routers.kontakt.tls.certresolver=letsencrypt"
+      - "traefik.http.services.kontakt.loadbalancer.server.port=4000"
+      - "traefik.http.routers.kontakt.priority=100"
+    networks:
+      - traefik_proxy
+
 networks:
   traefik_proxy:
     external: true

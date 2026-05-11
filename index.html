@@ -147,7 +147,8 @@
 
   /* KONTAKT */
   .kontakt { background: var(--warm-white); }
-  .kontakt-info { display: flex; flex-direction: column; gap: 1.5rem; max-width: 480px; }
+  .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .kontakt-info { display: flex; flex-direction: column; gap: 1.5rem; }
   .info-row { display: flex; align-items: flex-start; gap: 1.2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
   .info-icon { width: 44px; height: 44px; background: var(--sage-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: white; font-size: 1rem; }
   .info-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light); margin-bottom: 0.2rem; }
@@ -155,6 +156,10 @@
   .info-value a { color: var(--sage-dark); text-decoration: none; }
   .info-value a:hover { text-decoration: underline; }
   .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contact-form input, .contact-form textarea { width: 100%; padding: 14px 18px; border: 1.5px solid var(--border); background: var(--warm-white); font-family: 'Inter', sans-serif; font-size: 0.95rem; color: var(--text); border-radius: 3px; transition: border-color 0.2s; outline: none; }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--sage); }
+  .contact-form textarea { min-height: 140px; resize: vertical; }
+  .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
 
   /* SKRIVTERAPI */
@@ -207,7 +212,7 @@
     .brand-logo { max-width: min(200px, 55vw); }
   }
   @media (max-width: 800px) {
-    .about-grid, .gestalt-grid, .skriv-grid, .steps, .handledare-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-grid, .gestalt-grid, .skriv-grid, .steps, .handledare-grid, .kontakt-grid { grid-template-columns: 1fr; gap: 40px; }
   }
 </style>
 </head>
@@ -406,21 +411,32 @@
     <span class="section-label">Kontakt</span>
     <h2 class="section-title">Kontakta mig</h2>
     <p style="color:var(--text-light);margin-bottom:2rem;">Tveka inte att kontakta mig för mer information eller tidsbokning!</p>
-    <div class="kontakt-info">
-      <div class="info-row">
-        <div class="info-icon">✉</div>
-        <div>
-          <div class="info-label">E-post</div>
-          <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
+    <div class="kontakt-grid">
+      <div class="kontakt-info">
+        <div class="info-row">
+          <div class="info-icon">✉</div>
+          <div>
+            <div class="info-label">E-post</div>
+            <div class="info-value"><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div>
+            <div class="info-label">Adress</div>
+            <div class="info-value">Maria Prästgårdsgata 17, Stockholm</div>
+          </div>
         </div>
       </div>
-      <div class="info-row">
-        <div class="info-icon">📍</div>
-        <div>
-          <div class="info-label">Adress</div>
-          <div class="info-value">Maria Prästgårdsgata 17, Stockholm</div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <input type="text" id="contactName" name="name" placeholder="Ditt namn" required/>
+          <input type="email" id="contactEmail" name="email" placeholder="Din e-post" required/>
         </div>
-      </div>
+        <input type="text" id="contactSubject" name="subject" placeholder="Ämne"/>
+        <textarea id="contactMessage" name="message" placeholder="Ditt meddelande..." required></textarea>
+        <button type="submit" class="btn" style="border:none;cursor:pointer;text-align:center;">Skicka meddelande</button>
+      </form>
     </div>
   </div>
 </section>
@@ -457,6 +473,42 @@
       a.style.color = active ? 'var(--sage-dark)' : '';
     });
   });
+
+  // Kontaktformulär
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    contactForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      submitBtn.textContent = 'Skickar...';
+      submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('contactName').value.trim(),
+            email: document.getElementById('contactEmail').value.trim(),
+            subject: document.getElementById('contactSubject').value.trim(),
+            message: document.getElementById('contactMessage').value.trim()
+          })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          contactForm.innerHTML = '<p style="color:var(--sage-dark);font-size:1.1rem;">Tack för ditt meddelande! Jag återkommer så snart jag kan.</p>';
+        } else {
+          alert(data.error || 'Något gick fel. Försök igen.');
+        }
+      } catch (e) {
+        alert('Kunde inte skicka meddelandet. Försök igen senare.');
+      } finally {
+        submitBtn.textContent = 'Skicka meddelande';
+        submitBtn.disabled = false;
+      }
+    });
+  }
 
 </script>
 </body>
