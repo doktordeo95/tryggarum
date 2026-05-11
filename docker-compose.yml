@@ -23,7 +23,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_proxy"
-      - "traefik.http.routers.kontakt.rule=Host(`tryggarum.nu`) && PathPrefix(`/api`)"
+      - "traefik.http.routers.kontakt.rule=(Host(`tryggarum.nu`) || Host(`www.tryggarum.nu`)) && PathPrefix(`/api`)"
       - "traefik.http.routers.kontakt.entrypoints=websecure"
       - "traefik.http.routers.kontakt.tls=true"
       - "traefik.http.routers.kontakt.tls.certresolver=letsencrypt"
