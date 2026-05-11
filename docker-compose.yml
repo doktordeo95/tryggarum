@@ -28,7 +28,6 @@ services:
       - "traefik.http.routers.kontakt.tls=true"
       - "traefik.http.routers.kontakt.tls.certresolver=letsencrypt"
       - "traefik.http.services.kontakt.loadbalancer.server.port=4000"
-      - "traefik.http.routers.kontakt.priority=100"
     networks:
       - traefik_proxy
 

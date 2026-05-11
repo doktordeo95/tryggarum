@@ -160,6 +160,13 @@
   .contact-form input:focus, .contact-form textarea:focus { border-color: var(--sage); }
   .contact-form textarea { min-height: 140px; resize: vertical; }
   .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .contact-form .consent { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+  .contact-form .consent input { width: auto; margin-top: 3px; }
+  .contact-form .consent a { color: var(--sage-dark); }
+  .contact-form .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+  .form-message { padding: 0.9rem 1.1rem; border-radius: 3px; font-size: 0.92rem; }
+  .form-message.error { background: #fdecec; color: #a13434; border: 1px solid #f0c4c4; }
+  .form-message.success { background: #ecf3ed; color: var(--sage-dark); border: 1px solid #c8d8cb; }
 
 
   /* SKRIVTERAPI */
@@ -430,11 +437,19 @@
       </div>
       <form class="contact-form" id="contactForm">
         <div class="form-row">
-          <input type="text" id="contactName" name="name" placeholder="Ditt namn" required/>
-          <input type="email" id="contactEmail" name="email" placeholder="Din e-post" required/>
+          <input type="text" id="contactName" name="name" placeholder="Ditt namn" maxlength="80" required/>
+          <input type="email" id="contactEmail" name="email" placeholder="Din e-post" maxlength="120" required/>
         </div>
-        <input type="text" id="contactSubject" name="subject" placeholder="Ämne"/>
-        <textarea id="contactMessage" name="message" placeholder="Ditt meddelande..." required></textarea>
+        <input type="text" id="contactSubject" name="subject" placeholder="Ämne" maxlength="120"/>
+        <textarea id="contactMessage" name="message" placeholder="Ditt meddelande..." maxlength="2000" required></textarea>
+        <div class="honeypot" aria-hidden="true">
+          <label>Lämna detta fält tomt: <input type="text" id="contactWebsite" name="website" tabindex="-1" autocomplete="off"/></label>
+        </div>
+        <label class="consent">
+          <input type="checkbox" id="contactConsent" required/>
+          <span>Jag godkänner att Trygga Rum behandlar mina personuppgifter för att besvara min förfrågan, enligt <a href="/integritetspolicy.html" target="_blank">integritetspolicyn</a>.</span>
+        </label>
+        <div id="formMessage" class="form-message" style="display:none;"></div>
         <button type="submit" class="btn" style="border:none;cursor:pointer;text-align:center;">Skicka meddelande</button>
       </form>
     </div>
@@ -453,6 +468,8 @@
       <span>Maria Prästgårdsgata 17, Stockholm</span>
       <span class="footer-sep">·</span>
       <span><a href="mailto:charlotte.orwin@tryggarum.nu">charlotte.orwin@tryggarum.nu</a></span>
+      <span class="footer-sep">·</span>
+      <span><a href="/integritetspolicy.html">Integritetspolicy</a></span>
     </p>
 
     <p style="margin-top:1.5rem;font-size:0.75rem;opacity:0.4;">©2026 av William Sahlin</p>
@@ -478,8 +495,16 @@
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const messageBox = document.getElementById('formMessage');
+    const showMessage = (text, type) => {
+      messageBox.textContent = text;
+      messageBox.className = 'form-message ' + type;
+      messageBox.style.display = 'block';
+    };
+
     contactForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      messageBox.style.display = 'none';
       submitBtn.textContent = 'Skickar...';
       submitBtn.disabled = true;
 
@@ -491,18 +516,19 @@
             name: document.getElementById('contactName').value.trim(),
             email: document.getElementById('contactEmail').value.trim(),
             subject: document.getElementById('contactSubject').value.trim(),
-            message: document.getElementById('contactMessage').value.trim()
+            message: document.getElementById('contactMessage').value.trim(),
+            website: document.getElementById('contactWebsite').value
           })
         });
 
         const data = await res.json();
         if (data.success) {
-          contactForm.innerHTML = '<p style="color:var(--sage-dark);font-size:1.1rem;">Tack för ditt meddelande! Jag återkommer så snart jag kan.</p>';
+          contactForm.innerHTML = '<div class="form-message success">Tack för ditt meddelande! Jag återkommer snarast.</div>';
         } else {
-          alert(data.error || 'Något gick fel. Försök igen.');
+          showMessage(data.error || 'Något gick fel. Försök igen.', 'error');
         }
       } catch (e) {
-        alert('Kunde inte skicka meddelandet. Försök igen senare.');
+        showMessage('Kunde inte skicka meddelandet. Försök igen senare.', 'error');
       } finally {
         submitBtn.textContent = 'Skicka meddelande';
         submitBtn.disabled = false;

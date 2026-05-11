@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "express": "^4.21.0",
+    "express-rate-limit": "^7.4.0",
     "resend": "^4.0.0"
   }
 }
